@@ -10,12 +10,11 @@ import androidx.compose.foundation.layout.PaddingValues
 
 @Composable
 fun HomeScreen(
-  innerPadding: PaddingValues
+  modifier: Modifier
 ) {
   Column(
-    modifier = Modifier
+    modifier = modifier
       .fillMaxSize()
-      .padding(innerPadding)
       .padding(16.dp)
   ) {
 

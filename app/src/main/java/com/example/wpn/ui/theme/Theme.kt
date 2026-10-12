@@ -13,14 +13,20 @@ private val LightColorScheme = lightColorScheme(
   secondary = LightSecondary,
   onSecondary = LightOnSecondary,
 
+  tertiary = LightTertiary,
+  onTertiary = LightOnTertiary,
+
   background = LightBackground,
   onBackground = LightOnBackground,
 
   surface = LightSurface,
   onSurface = LightOnSurface,
 
+  surfaceVariant = LightSurfaceVariant,
+  onSurfaceVariant = LightOnSurfaceVariant,
+
   error = LightError,
-  onError = LightOnError
+  onError = LightOnError,
 )
 
 private val DarkColorScheme = darkColorScheme(
@@ -30,11 +36,17 @@ private val DarkColorScheme = darkColorScheme(
   secondary = DarkSecondary,
   onSecondary = DarkOnSecondary,
 
+  tertiary = DarkTertiary,
+  onTertiary = DarkOnTertiary,
+
   background = DarkBackground,
   onBackground = DarkOnBackground,
 
   surface = DarkSurface,
   onSurface = DarkOnSurface,
+
+  surfaceVariant = DarkSurfaceVariant,
+  onSurfaceVariant = DarkOnSurfaceVariant,
 
   error = DarkError,
   onError = DarkOnError
@@ -43,7 +55,7 @@ private val DarkColorScheme = darkColorScheme(
 @Composable
 fun AppTheme(
   darkTheme: Boolean = isSystemInDarkTheme(),
-  content: @Composable () -> Unit
+  content: @Composable () -> Unit,
 ) {
   val colorScheme = if (darkTheme) {
     DarkColorScheme
@@ -54,6 +66,6 @@ fun AppTheme(
   MaterialTheme(
     colorScheme = colorScheme,
     typography = AppTypography,
-    content = content
+    content = content,
   )
 }

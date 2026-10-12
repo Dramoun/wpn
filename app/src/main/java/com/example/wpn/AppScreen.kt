@@ -1,67 +1,194 @@
 package com.example.wpn
 
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.example.wpn.ui.components.TopBar
-import com.example.wpn.ui.components.SideMenu
+import com.example.wpn.preprocesses.EditingItem
+import com.example.wpn.preprocesses.rememberAppUiState
 import com.example.wpn.ui.components.AppFloatingButton
-import com.example.wpn.ui.screens.HomeScreen
+import com.example.wpn.ui.map.AppPage
+import com.example.wpn.ui.map.CommonCrudItemData
+import com.example.wpn.ui.navigation.AppDrawer
+import com.example.wpn.ui.navigation.AppTopBar
+import com.example.wpn.ui.overlay.AddSheet
+import com.example.wpn.ui.screens.BaseScreen
 import com.example.wpn.ui.theme.AppTheme
 
 @Composable
 fun AppScreen() {
-
-  var darkTheme by remember {
-    mutableStateOf(false)
+  val ui = rememberAppUiState()
+  val dlcList = remember {
+    mutableStateListOf<CommonCrudItemData>()
+  }
+  val tagList = remember {
+    mutableStateListOf<CommonCrudItemData>()
+  }
+  val questMatchList = remember {
+    mutableStateListOf<CommonCrudItemData>()
+  }
+  val questPersonalList = remember {
+    mutableStateListOf<CommonCrudItemData>()
   }
 
-  var menuOpen by remember {
-    mutableStateOf(false)
+
+  val showFab = when (ui.currentPage) {
+    AppPage.HOME,
+    AppPage.QUESTS_MATCH -> false
+    else -> true
   }
 
   AppTheme(
-    darkTheme = darkTheme
+    darkTheme = ui.darkTheme
   ) {
-
-    Scaffold(
-      modifier = Modifier.fillMaxSize(),
-
-      topBar = {
-        TopBar(
-          showBackButton = false,
-          onMenuClick = {
-            menuOpen = true
-          },
-          onBackClick = {
-            // Back handling later
-          },
-          onThemeClick = {
-            darkTheme = !darkTheme
+    AppDrawer(
+      currentPage = ui.currentPage,
+      onPageSelected = { ui.currentPage = it }
+    ) { onMenuClick ->
+      Scaffold(
+        floatingActionButton = {
+          if (showFab) {
+            AppFloatingButton(onClick = ui::openAdd)
           }
-        )
-      },
+        },
+        topBar = {
+          if (ui.currentPage != AppPage.HOME) {
+          AppTopBar(
+            page = ui.currentPage,
+            onMenuClick = onMenuClick
+          )}
+        }
+      ) { innerPadding ->
+        Box(Modifier.padding(innerPadding)) {
+          BaseScreen(
+            currentPage = ui.currentPage,
+            dlcList=dlcList,
+            tagList = tagList,
+            questMatchList = questMatchList,
+            questPersonalList = questPersonalList,
+            onDlcClick= {item -> ui.openEdit(EditingItem.DLC(item))},
+            onTagClick= {item -> ui.openEdit(EditingItem.Tag(item))},
+            onQuestMatchClick= {item -> ui.openEdit(EditingItem.QuestMatch(item))},
+            onQuestPersonalClick= {item -> ui.openEdit(EditingItem.QuestPersonal(item))}
+          )
 
-      floatingActionButton = {
-        AppFloatingButton(
-          onClick = {
-            // Page-specific action
+          if (ui.showAddSheet) {
+            AddSheet(
+              currentPage = ui.currentPage,
+              editingItem = ui.editingItem,
+              onDismiss = ui::closeSheet,
+              onSave = { item, isUpdate ->
+                when (item) {
+                  is EditingItem.DLC -> {
+                    if (isUpdate) {
+                      val index = dlcList.indexOfFirst {
+                        it.id == item.item.id
+                      }
+
+                      if (index != -1) {
+                        dlcList[index] = item.item
+                      }
+                    } else {
+                      dlcList.add(item.item)
+                    }
+                  }
+
+                  is EditingItem.Tag -> {
+                    if (isUpdate) {
+                      val index = tagList.indexOfFirst {
+                        it.id == item.item.id
+                      }
+
+                      if (index != -1) {
+                        tagList[index] = item.item
+                      }
+                    } else {
+                      tagList.add(item.item)
+                    }
+                  }
+
+                  is EditingItem.QuestMatch -> {
+                    if (isUpdate) {
+                      val index = questMatchList.indexOfFirst {
+                        it.id == item.item.id
+                      }
+
+                      if (index != -1) {
+                        questMatchList[index] = item.item
+                      }
+                    } else {
+                      questMatchList.add(item.item)
+                    }
+                  }
+
+                  is EditingItem.QuestPersonal -> {
+                    if (isUpdate) {
+                      val index = questPersonalList.indexOfFirst {
+                        it.id == item.item.id
+                      }
+
+                      if (index != -1) {
+                        questPersonalList[index] = item.item
+                      }
+                    } else {
+                      questPersonalList.add(item.item)
+                    }
+                  }
+                  EditingItem.None -> {}
+                  else -> {}
+                }
+                ui.closeSheet()
+              },
+              onDelete = { item ->
+                when (item) {
+                  is EditingItem.Tag -> {
+                    val index = tagList.indexOfFirst {
+                      it.id == item.item.id
+                    }
+
+                    if (index != -1) {
+                      tagList.removeAt(index)
+                    }
+                  }
+
+                  is EditingItem.DLC -> {
+                    val index = dlcList.indexOfFirst {
+                      it.id == item.item.id
+                    }
+
+                    if (index != -1) {
+                      dlcList.removeAt(index)
+                    }
+                  }
+
+                  is EditingItem.QuestMatch -> {
+                    val index = questMatchList.indexOfFirst {
+                      it.id == item.item.id
+                    }
+
+                    if (index != -1) {
+                      questMatchList.removeAt(index)
+                    }
+                  }
+
+                  is EditingItem.QuestPersonal -> {
+                    val index = questPersonalList.indexOfFirst {
+                      it.id == item.item.id
+                    }
+
+                    if (index != -1) {
+                      questPersonalList.removeAt(index)
+                    }
+                  }
+                  EditingItem.None -> {}
+                  else -> {}
+                }
+                ui.closeSheet()
+              }
+            )
           }
-        )
-      }
-    ) { innerPadding ->
-
-      HomeScreen(
-        innerPadding = innerPadding
-      )
-
-      if (menuOpen) {
-        SideMenu(
-          onDismiss = {
-            menuOpen = false
-          }
-        )
+        }
       }
     }
   }
