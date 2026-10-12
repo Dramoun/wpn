@@ -1,10 +1,11 @@
-package com.example.wpn.ui.map
+package com.example.wpn.model
 
 import java.time.LocalDateTime
 
 enum class AppPage(val label: String) {
   HOME("Home"),
   PLAYER_LIST("Players"),
+  PLAYER_DETAILS("Player details"),
   MATCH_LIST("Matches"),
   TAGS("Tags"),
   DLCS("DLCs"),

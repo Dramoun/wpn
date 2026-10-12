@@ -12,8 +12,6 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
-import androidx.compose.material3.NavigationDrawerItem
-import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -22,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.example.wpn.ui.components.DrawerItem
 import com.example.wpn.ui.components.DrawerTextLarge
 import com.example.wpn.ui.components.DrawerTextMedium
-import com.example.wpn.ui.map.AppPage
+import com.example.wpn.model.AppPage
 import kotlinx.coroutines.launch
 
 @Composable
@@ -62,6 +60,12 @@ fun AppDrawer(
 
           DrawerItem(
             itemPage=AppPage.HOME,
+            currentPage = currentPage,
+            onClick = { page -> onClick(page) }
+          )
+
+          DrawerItem(
+            itemPage=AppPage.PLAYER_LIST,
             currentPage = currentPage,
             onClick = { page -> onClick(page) }
           )

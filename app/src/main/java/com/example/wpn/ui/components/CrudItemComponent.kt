@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.wpn.ui.map.CommonCrudItemData
+import com.example.wpn.model.CommonCrudItemData
 
 @Composable
 fun CrudItemComponent (
@@ -28,15 +28,8 @@ fun CrudItemComponent (
       verticalAlignment = Alignment.CenterVertically,
       horizontalArrangement = Arrangement.SpaceBetween
     ) {
-      Text(
-        text = item.name,
-        color = MaterialTheme.colorScheme.onPrimary
-      )
-
-      Text(
-        text = item.description ?: "",
-        color = MaterialTheme.colorScheme.onSecondary
-      )
+      CustomTextBoxPrimary( text=item.name )
+      CustomTextBoxSecondary( text=item.name )
     }
   }
 }

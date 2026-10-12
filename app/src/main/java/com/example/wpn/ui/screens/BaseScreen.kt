@@ -2,9 +2,12 @@ package com.example.wpn.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.wpn.ui.map.AppPage
-import com.example.wpn.ui.map.CommonCrudItemData
+import com.example.wpn.model.AppPage
+import com.example.wpn.model.CommonCrudItemData
+import com.example.wpn.model.PlayerItemData
 import com.example.wpn.ui.pages.BaseLookupPage
+import com.example.wpn.ui.pages.HomeScreen
+import com.example.wpn.ui.pages.PlayerListPage
 
 
 @Composable
@@ -15,10 +18,12 @@ fun BaseScreen(
   tagList: List<CommonCrudItemData>,
   questMatchList: List<CommonCrudItemData>,
   questPersonalList: List<CommonCrudItemData>,
-  onDlcClick: (CommonCrudItemData) -> Unit = {},
-  onTagClick: (CommonCrudItemData) -> Unit = {},
-  onQuestMatchClick: (CommonCrudItemData) -> Unit = {},
-  onQuestPersonalClick: (CommonCrudItemData) -> Unit = {},
+  playerList: List<PlayerItemData>,
+  onDlcClick: (CommonCrudItemData) -> Unit,
+  onTagClick: (CommonCrudItemData) -> Unit,
+  onQuestMatchClick: (CommonCrudItemData) -> Unit,
+  onQuestPersonalClick: (CommonCrudItemData) -> Unit,
+  onPlayerClick: (PlayerItemData) -> Unit
 ) {
   when (currentPage) {
     AppPage.MATCH_LIST -> null
@@ -26,7 +31,13 @@ fun BaseScreen(
       HomeScreen(
         modifier = modifier
       )
-    AppPage.PLAYER_LIST -> null
+    AppPage.PLAYER_LIST ->
+      PlayerListPage(
+        modifier = modifier,
+        playerList = playerList,
+        onPlayerClick = onPlayerClick
+      )
+    AppPage.PLAYER_DETAILS -> null
     AppPage.DLCS ->
       BaseLookupPage(
         modifier = modifier,

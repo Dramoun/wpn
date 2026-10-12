@@ -2,7 +2,7 @@ package com.example.wpn.ui.overlay
 
 import androidx.compose.runtime.Composable
 import com.example.wpn.preprocesses.EditingItem
-import com.example.wpn.ui.map.AppPage
+import com.example.wpn.model.AppPage
 import java.time.LocalDate
 
 @Composable
@@ -17,6 +17,7 @@ fun AddSheet(
   when (currentPage) {
     AppPage.HOME,
     AppPage.PLAYER_LIST,
+    AppPage.PLAYER_DETAILS,
     AppPage.MATCH_LIST -> null
     AppPage.TAGS -> {
       val existing = (editingItem as? EditingItem.Tag)?.item

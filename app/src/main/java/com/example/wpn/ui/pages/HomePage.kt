@@ -1,4 +1,4 @@
-package com.example.wpn.ui.screens
+package com.example.wpn.ui.pages
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
@@ -6,7 +6,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.layout.PaddingValues
 
 @Composable
 fun HomeScreen(

@@ -5,10 +5,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import com.example.wpn.ui.map.AppPage
-import com.example.wpn.ui.map.CommonCrudItemData
-import com.example.wpn.ui.map.PlayerMatchItemData
-import com.example.wpn.ui.map.PlayerItemData
+import com.example.wpn.model.AppPage
+import com.example.wpn.model.CommonCrudItemData
+import com.example.wpn.model.PlayerMatchItemData
+import com.example.wpn.model.PlayerItemData
 import java.time.LocalDate
 
 sealed interface EditingItem {
@@ -23,7 +23,7 @@ sealed interface EditingItem {
 
 class AppUiState {
   var currentPage by mutableStateOf(AppPage.HOME)
-  var date by mutableStateOf<LocalDate>(LocalDate.now())
+  var selectedPlayerId by mutableStateOf<Long?>(null)
   var darkTheme by mutableStateOf(true)
   var showAddSheet by mutableStateOf(false)
   var editingItem: EditingItem by mutableStateOf(EditingItem.None)

@@ -32,7 +32,7 @@ fun <T>OverLayFooter(
           onDelete(itemData)
         },
         colors = ButtonDefaults.buttonColors(
-          contentColor = MaterialTheme.colorScheme.onError,
+          contentColor = MaterialTheme.colorScheme.error,
           containerColor = MaterialTheme.colorScheme.surface
         )
       ) {

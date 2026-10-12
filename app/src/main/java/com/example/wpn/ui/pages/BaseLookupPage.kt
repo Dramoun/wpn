@@ -10,13 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.wpn.ui.components.CrudItemComponent
-import com.example.wpn.ui.map.CommonCrudItemData
+import com.example.wpn.model.CommonCrudItemData
 
 @Composable
 fun BaseLookupPage(
   modifier: Modifier = Modifier,
   itemList: List<CommonCrudItemData>,
-  onItemClick: (CommonCrudItemData) -> Unit = {}
+  onItemClick: (CommonCrudItemData) -> Unit
 ) {
   Column(
     modifier = modifier.fillMaxSize().padding(16.dp)

@@ -1,4 +1,4 @@
-package com.example.wpn
+package com.example.wpn.ui.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -8,12 +8,12 @@ import androidx.compose.ui.Modifier
 import com.example.wpn.preprocesses.EditingItem
 import com.example.wpn.preprocesses.rememberAppUiState
 import com.example.wpn.ui.components.AppFloatingButton
-import com.example.wpn.ui.map.AppPage
-import com.example.wpn.ui.map.CommonCrudItemData
+import com.example.wpn.model.AppPage
+import com.example.wpn.model.CommonCrudItemData
+import com.example.wpn.model.PlayerItemData
 import com.example.wpn.ui.navigation.AppDrawer
 import com.example.wpn.ui.navigation.AppTopBar
 import com.example.wpn.ui.overlay.AddSheet
-import com.example.wpn.ui.screens.BaseScreen
 import com.example.wpn.ui.theme.AppTheme
 
 @Composable
@@ -32,6 +32,9 @@ fun AppScreen() {
     mutableStateListOf<CommonCrudItemData>()
   }
 
+  val playerList = remember {
+    mutableStateListOf<PlayerItemData>()
+  }
 
   val showFab = when (ui.currentPage) {
     AppPage.HOME,
@@ -56,14 +59,16 @@ fun AppScreen() {
           if (ui.currentPage != AppPage.HOME) {
           AppTopBar(
             page = ui.currentPage,
-            onMenuClick = onMenuClick
+            onMenuClick = onMenuClick,
+            playerName = playerList.find {
+              it.id == ui.selectedPlayerId}?.name
           )}
         }
       ) { innerPadding ->
         Box(Modifier.padding(innerPadding)) {
           BaseScreen(
             currentPage = ui.currentPage,
-            dlcList=dlcList,
+            dlcList = dlcList,
             tagList = tagList,
             questMatchList = questMatchList,
             questPersonalList = questPersonalList,

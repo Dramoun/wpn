@@ -9,18 +9,21 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import com.example.wpn.ui.components.AppIcon
 import com.example.wpn.ui.components.AppIcons
-import com.example.wpn.ui.map.AppPage
+import com.example.wpn.model.AppPage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppTopBar(
   page: AppPage,
-  onMenuClick: () -> Unit
+  onMenuClick: () -> Unit,
+  playerName: String?
 ) {
   CenterAlignedTopAppBar(
     title = {
       Text(
-        page.label,
+        text = if (page == AppPage.PLAYER_DETAILS) {
+          playerName?: page.label
+        } else { page.label },
         color = MaterialTheme.colorScheme.primary,
       )},
     navigationIcon = {
