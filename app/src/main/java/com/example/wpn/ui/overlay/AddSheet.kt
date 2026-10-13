@@ -3,13 +3,11 @@ package com.example.wpn.ui.overlay
 import androidx.compose.runtime.Composable
 import com.example.wpn.preprocesses.EditingItem
 import com.example.wpn.model.AppPage
-import java.time.LocalDate
 
 @Composable
 fun AddSheet(
   currentPage: AppPage,
   editingItem: EditingItem,
-  date: LocalDate = LocalDate.now(),
   onDismiss: () -> Unit,
   onSave: (EditingItem, isUpdate: Boolean) -> Unit,
   onDelete: (EditingItem) -> Unit
