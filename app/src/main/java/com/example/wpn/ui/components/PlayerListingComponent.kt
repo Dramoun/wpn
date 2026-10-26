@@ -19,7 +19,7 @@ fun PlayerListingComponent (
   playerData: PlayerItemData
 ) {
   Card(
-    modifier = modifier.fillMaxWidth().clickable { onPlayerClick(playerData.id) }
+    modifier = modifier.fillMaxWidth().clickable { onPlayerClick(playerData.id?: 0) }
   ) {
     Row(
       modifier = Modifier.fillMaxWidth().padding(12.dp),
@@ -27,9 +27,9 @@ fun PlayerListingComponent (
       horizontalArrangement = Arrangement.SpaceBetween
     ) {
       CustomTextBoxPrimary( text = playerData.shortName)
-      CustomTextBoxSecondary( text = playerData.highScore.toString())
-      CustomTextBoxSecondary( text = playerData.totalWins.toString())
-      CustomTextBoxPrimary( text = playerData.totalGames.toString())
+      CustomTextBoxSecondary( text = playerData.highScore?.toString() ?: "0")
+      CustomTextBoxSecondary( text = playerData.totalWins?.toString() ?: "0")
+      CustomTextBoxPrimary( text = playerData.totalGames?.toString() ?: "0")
     }
   }
 }

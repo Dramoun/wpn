@@ -13,10 +13,21 @@ fun AddSheet(
   onDelete: (EditingItem) -> Unit
 ) {
   when (currentPage) {
-    AppPage.HOME,
-    AppPage.PLAYER_LIST,
+    AppPage.HOME -> null
+
     AppPage.PLAYER_DETAILS,
+    AppPage.PLAYER_LIST -> {
+      val existing = (editingItem as? EditingItem.Player)?.item
+      PlayerAddOverlay(
+        updateItem = existing,
+        onDismiss = onDismiss,
+        onDelete = { onDelete(EditingItem.Player(it)) },
+        onAdd = { onSave(EditingItem.Player(it), existing != null) }
+      )
+    }
+
     AppPage.MATCH_LIST -> null
+
     AppPage.TAGS -> {
       val existing = (editingItem as? EditingItem.Tag)?.item
       BaseLookupAddOverlay(

@@ -20,16 +20,16 @@ data class CommonCrudItemData(
 )
 
 data class PlayerItemData(
-  val id: Long,
+  val id: Long?,
   val name: String,
   val shortName: String,
   val joinedAt: LocalDateTime,
-  val lastPlayed: LocalDateTime,
-  val totalGames: Int,
-  val totalWins: Int,
-  val averageScore: Float,
-  val highScore: Int,
-  val lowScore: Int
+  val lastPlayed: LocalDateTime?,
+  val totalGames: Int?,
+  val totalWins: Int?,
+  val averageScore: Float?,
+  val highScore: Int?,
+  val lowScore: Int?
 )
 
 data class PlayerMatchItemData(

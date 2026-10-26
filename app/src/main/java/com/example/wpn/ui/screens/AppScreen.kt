@@ -72,10 +72,15 @@ fun AppScreen() {
             tagList = tagList,
             questMatchList = questMatchList,
             questPersonalList = questPersonalList,
-            onDlcClick= {item -> ui.openEdit(EditingItem.DLC(item))},
-            onTagClick= {item -> ui.openEdit(EditingItem.Tag(item))},
-            onQuestMatchClick= {item -> ui.openEdit(EditingItem.QuestMatch(item))},
-            onQuestPersonalClick= {item -> ui.openEdit(EditingItem.QuestPersonal(item))}
+            playerList = playerList,
+            onDlcClick= { item -> ui.openEdit(EditingItem.DLC(item)) },
+            onTagClick= { item -> ui.openEdit(EditingItem.Tag(item)) },
+            onQuestMatchClick= { item -> ui.openEdit(EditingItem.QuestMatch(item)) },
+            onQuestPersonalClick= { item -> ui.openEdit(EditingItem.QuestPersonal(item)) },
+            onPlayerClick = { player ->
+              ui.selectedPlayerId = player.id
+              ui.currentPage = AppPage.PLAYER_DETAILS
+            }
           )
 
           if (ui.showAddSheet) {
@@ -138,6 +143,20 @@ fun AppScreen() {
                       }
                     } else {
                       questPersonalList.add(item.item)
+                    }
+                  }
+
+                  is EditingItem.Player -> {
+                    if (isUpdate) {
+                      val index = playerList.indexOfFirst {
+                        it.id == item.item.id
+                      }
+
+                      if (index != -1) {
+                        playerList[index] = item.item
+                      }
+                    } else {
+                      playerList.add(item.item)
                     }
                   }
                   EditingItem.None -> {}

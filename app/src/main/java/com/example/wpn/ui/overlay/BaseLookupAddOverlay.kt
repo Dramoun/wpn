@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.OutlinedTextField
@@ -26,8 +27,8 @@ fun BaseLookupAddOverlay(
   onDelete: (CommonCrudItemData) -> Unit,
   onAdd: (CommonCrudItemData) -> Unit
 ) {
-  var name by remember { mutableStateOf(updateItem?.name ?: "") }
-  var description by remember { mutableStateOf(updateItem?.description ?: "") }
+  val name = rememberTextFieldState(initialText = updateItem?.name ?: "")
+  val description = rememberTextFieldState(initialText = updateItem?.description ?: "")
 
   Dialog(onDismissRequest = onDismiss) {
     Card{
@@ -37,26 +38,24 @@ fun BaseLookupAddOverlay(
           .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(16.dp)
       ) {
-        Text(if (updateItem != null) "Update Task" else "Add Task")
+        Text(if (updateItem != null) "Update Item" else "Add Item")
 
         OutlinedTextField(
-          value = name,
-          onValueChange = { name = it },
+          state = name,
           label = { Text("Name") },
           modifier = Modifier.fillMaxWidth()
         )
 
         OutlinedTextField(
-          value = description,
-          onValueChange = { description = it },
+          state = description,
           label = { Text("Description") },
           modifier = Modifier.fillMaxWidth()
         )
 
         OverLayFooter(
           itemData = CommonCrudItemData(
-            name = name,
-            description = description.ifBlank { null },
+            name = name.text.toString(),
+            description = description.text.toString().ifBlank { null },
             id = updateItem?.id
           ),
           itemExists = updateItem != null,
