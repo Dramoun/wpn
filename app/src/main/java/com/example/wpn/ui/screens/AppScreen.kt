@@ -19,15 +19,19 @@ import com.example.wpn.ui.theme.AppTheme
 @Composable
 fun AppScreen() {
   val ui = rememberAppUiState()
+
   val dlcList = remember {
     mutableStateListOf<CommonCrudItemData>()
   }
+
   val tagList = remember {
     mutableStateListOf<CommonCrudItemData>()
   }
+
   val questMatchList = remember {
     mutableStateListOf<CommonCrudItemData>()
   }
+
   val questPersonalList = remember {
     mutableStateListOf<CommonCrudItemData>()
   }
@@ -38,7 +42,7 @@ fun AppScreen() {
 
   val showFab = when (ui.currentPage) {
     AppPage.HOME,
-    AppPage.QUESTS_MATCH -> false
+    AppPage.PLAYER_DETAILS -> false
     else -> true
   }
 
@@ -57,12 +61,14 @@ fun AppScreen() {
         },
         topBar = {
           if (ui.currentPage != AppPage.HOME) {
-          AppTopBar(
-            page = ui.currentPage,
-            onMenuClick = onMenuClick,
-            playerName = playerList.find {
-              it.id == ui.selectedPlayerId}?.name
-          )}
+            AppTopBar(
+              page = ui.currentPage,
+              onMenuClick = onMenuClick,
+              playerName = playerList.find {
+                it.id == ui.selectedPlayerId
+              }?.name
+            )
+          }
         }
       ) { innerPadding ->
         Box(Modifier.padding(innerPadding)) {
@@ -73,13 +79,31 @@ fun AppScreen() {
             questMatchList = questMatchList,
             questPersonalList = questPersonalList,
             playerList = playerList,
-            onDlcClick= { item -> ui.openEdit(EditingItem.DLC(item)) },
-            onTagClick= { item -> ui.openEdit(EditingItem.Tag(item)) },
-            onQuestMatchClick= { item -> ui.openEdit(EditingItem.QuestMatch(item)) },
-            onQuestPersonalClick= { item -> ui.openEdit(EditingItem.QuestPersonal(item)) },
+            onDlcClick = { item ->
+              ui.openEdit(EditingItem.DLC(item))
+            },
+            onTagClick = { item ->
+              ui.openEdit(EditingItem.Tag(item))
+            },
+            onQuestMatchClick = { item ->
+              ui.openEdit(EditingItem.QuestMatch(item))
+            },
+            onQuestPersonalClick = { item ->
+              ui.openEdit(EditingItem.QuestPersonal(item))
+            },
             onPlayerClick = { player ->
               ui.selectedPlayerId = player.id
               ui.currentPage = AppPage.PLAYER_DETAILS
+            },
+            onPlayerUpdateClick = { item ->
+              ui.openEdit(EditingItem.Player(item))
+            },
+            onDeletePlayerClick = { playerData ->
+              playerList.remove(playerData)
+              ui.currentPage = AppPage.PLAYER_LIST
+            },
+            selectedPlayerData = playerList.find {
+              it.id == ui.selectedPlayerId
             }
           )
 
@@ -95,7 +119,6 @@ fun AppScreen() {
                       val index = dlcList.indexOfFirst {
                         it.id == item.item.id
                       }
-
                       if (index != -1) {
                         dlcList[index] = item.item
                       }
@@ -109,7 +132,6 @@ fun AppScreen() {
                       val index = tagList.indexOfFirst {
                         it.id == item.item.id
                       }
-
                       if (index != -1) {
                         tagList[index] = item.item
                       }
@@ -123,7 +145,6 @@ fun AppScreen() {
                       val index = questMatchList.indexOfFirst {
                         it.id == item.item.id
                       }
-
                       if (index != -1) {
                         questMatchList[index] = item.item
                       }
@@ -137,7 +158,6 @@ fun AppScreen() {
                       val index = questPersonalList.indexOfFirst {
                         it.id == item.item.id
                       }
-
                       if (index != -1) {
                         questPersonalList[index] = item.item
                       }
@@ -151,7 +171,6 @@ fun AppScreen() {
                       val index = playerList.indexOfFirst {
                         it.id == item.item.id
                       }
-
                       if (index != -1) {
                         playerList[index] = item.item
                       }
@@ -159,9 +178,11 @@ fun AppScreen() {
                       playerList.add(item.item)
                     }
                   }
+
                   EditingItem.None -> {}
                   else -> {}
                 }
+
                 ui.closeSheet()
               },
               onDelete = { item ->
@@ -170,7 +191,6 @@ fun AppScreen() {
                     val index = tagList.indexOfFirst {
                       it.id == item.item.id
                     }
-
                     if (index != -1) {
                       tagList.removeAt(index)
                     }
@@ -180,7 +200,6 @@ fun AppScreen() {
                     val index = dlcList.indexOfFirst {
                       it.id == item.item.id
                     }
-
                     if (index != -1) {
                       dlcList.removeAt(index)
                     }
@@ -190,7 +209,6 @@ fun AppScreen() {
                     val index = questMatchList.indexOfFirst {
                       it.id == item.item.id
                     }
-
                     if (index != -1) {
                       questMatchList.removeAt(index)
                     }
@@ -200,15 +218,14 @@ fun AppScreen() {
                     val index = questPersonalList.indexOfFirst {
                       it.id == item.item.id
                     }
-
                     if (index != -1) {
                       questPersonalList.removeAt(index)
                     }
                   }
+
                   EditingItem.None -> {}
                   else -> {}
                 }
-                ui.closeSheet()
               }
             )
           }

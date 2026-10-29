@@ -2,6 +2,7 @@ package com.example.wpn.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -33,6 +34,7 @@ fun AppIcon(
   hasBorder: Boolean = true,
   showIcon: Boolean = true,
   useIconStyleColors: Boolean = false,
+  onClick: () -> Unit = {}
 ) {
   val foregroundColor = if (useIconStyleColors) {
     style.color
@@ -57,7 +59,7 @@ fun AppIcon(
         width = if (hasBorder) 1.5.dp else 0.dp,
         color = foregroundColor.copy(alpha = 0.4f),
         shape = CircleShape
-      ),
+      ).clickable(onClick = onClick),
     contentAlignment = Alignment.Center
   ) {
     if (showIcon) {

@@ -11,7 +11,8 @@ fun AppFloatingButton(
     onClick = onClick
   ) {
     AppIcon(
-      style= AppIconType.ADD.toStyle()
+      style= AppIconType.ADD.toStyle(),
+      onClick = onClick
     )
   }
 }

@@ -20,13 +20,14 @@ fun <T>OverLayFooter(
   itemExists: Boolean,
   onDismiss: () -> Unit,
   onDelete: (T) -> Unit,
-  onAdd: (T) -> Unit
+  onAdd: (T) -> Unit,
+  disableDelete: Boolean = false
 ){
   Row(
     modifier = Modifier.fillMaxWidth().padding(16.dp),
     horizontalArrangement = Arrangement.SpaceAround
   ) {
-    if (itemExists) {
+    if (itemExists && !disableDelete) {
       Button(
         onClick = {
           onDelete(itemData)

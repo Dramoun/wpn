@@ -27,15 +27,14 @@ fun AppTopBar(
         color = MaterialTheme.colorScheme.primary,
       )},
     navigationIcon = {
-      IconButton(onClick = onMenuClick) {
-        AppIcon(style = AppIcons.Menu())
-      }
+      AppIcon(
+        style = AppIcons.Menu(),
+        onClick = onMenuClick
+      )
     },
     // TODO: no feature currently here but button is ready
     actions = {
-      IconButton(onClick = { }) {
-        AppIcon(style = AppIcons.More())
-      }
+      AppIcon(style = AppIcons.More())
     },
     colors = TopAppBarDefaults.topAppBarColors(
       containerColor = MaterialTheme.colorScheme.surface,

@@ -7,6 +7,7 @@ import com.example.wpn.model.CommonCrudItemData
 import com.example.wpn.model.PlayerItemData
 import com.example.wpn.ui.pages.BaseLookupPage
 import com.example.wpn.ui.pages.HomeScreen
+import com.example.wpn.ui.pages.PlayerDetailsPage
 import com.example.wpn.ui.pages.PlayerListPage
 
 
@@ -23,7 +24,10 @@ fun BaseScreen(
   onTagClick: (CommonCrudItemData) -> Unit,
   onQuestMatchClick: (CommonCrudItemData) -> Unit,
   onQuestPersonalClick: (CommonCrudItemData) -> Unit,
-  onPlayerClick: (PlayerItemData) -> Unit
+  onPlayerClick: (PlayerItemData) -> Unit,
+  onPlayerUpdateClick: (PlayerItemData) -> Unit,
+  onDeletePlayerClick: (PlayerItemData) -> Unit,
+  selectedPlayerData: PlayerItemData?
 ) {
   when (currentPage) {
     AppPage.MATCH_LIST -> null
@@ -37,7 +41,12 @@ fun BaseScreen(
         playerList = playerList,
         onPlayerClick = onPlayerClick
       )
-    AppPage.PLAYER_DETAILS -> null
+    AppPage.PLAYER_DETAILS ->
+      PlayerDetailsPage(
+        playerInfo = selectedPlayerData!!,
+        onUpdateClick = onPlayerUpdateClick,
+        onDeleteClick = onDeletePlayerClick
+      )
     AppPage.DLCS ->
       BaseLookupPage(
         modifier = modifier,

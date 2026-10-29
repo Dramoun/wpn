@@ -37,7 +37,7 @@ fun PlayerAddOverlay(
           .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(16.dp)
       ) {
-        Text(if (updateItem != null) "Update Task" else "Add Task")
+        Text(if (updateItem == null) "Add new Player" else "Update Player")
 
         OutlinedTextField(
           state = name,
@@ -68,7 +68,8 @@ fun PlayerAddOverlay(
           itemExists = updateItem != null,
           onDismiss = onDismiss,
           onDelete = onDelete,
-          onAdd = onAdd
+          onAdd = onAdd,
+          disableDelete = true
         )
       }
     }
