@@ -50,7 +50,7 @@ fun <T : Any> ReorderListComponent(
   val rowHeights = remember { mutableStateMapOf<Any, Float>() }
 
   val density = LocalDensity.current
-  val spacingPx = with(density) { 12.dp.toPx() }
+  val spacingPx = with(density) { 4.dp.toPx() }
 
   val currentItems by rememberUpdatedState(items)
   val currentKeyOf by rememberUpdatedState(keyOf)
@@ -66,7 +66,7 @@ fun <T : Any> ReorderListComponent(
         )
       )
       .padding(16.dp),
-    verticalArrangement = Arrangement.spacedBy(12.dp),
+    verticalArrangement = Arrangement.spacedBy(4.dp),
   ) {
     items.forEachIndexed { index, item ->
       val itemKey = keyOf(item)
