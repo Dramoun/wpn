@@ -51,15 +51,19 @@ fun AppIcon(
   Box(
     modifier = modifier
       .size(size)
-      .background(
-        color = backgroundColor,
-        shape = CircleShape
+      .background(backgroundColor, CircleShape)
+      .then(
+        if (hasBorder) {
+          Modifier.border(
+            width = 1.5.dp,
+            color = foregroundColor.copy(alpha = 0.4f),
+            shape = CircleShape
+          )
+        } else {
+          Modifier
+        }
       )
-      .border(
-        width = if (hasBorder) 1.5.dp else 0.dp,
-        color = foregroundColor.copy(alpha = 0.4f),
-        shape = CircleShape
-      ).clickable(onClick = onClick),
+      .clickable(onClick = onClick),
     contentAlignment = Alignment.Center
   ) {
     if (showIcon) {
