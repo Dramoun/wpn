@@ -1,18 +1,23 @@
 package com.example.wpn.ui.pages
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.wpn.ui.components.CustomListComponent
 import com.example.wpn.ui.components.ReorderListComponent
 import com.example.wpn.ui.components.SearchDropDownComponent
+import com.example.wpn.ui.components.VerticalInputComponent
 
 @Composable
 fun HomeScreen(
   modifier: Modifier
 ) {
+  val  number = rememberTextFieldState("0")
+
   val testItems = remember {
     mutableStateListOf(
       "First item",
@@ -87,6 +92,22 @@ fun HomeScreen(
       Text(
         text = item,
         style = MaterialTheme.typography.bodyLarge
+      )
+    }
+    Row(
+      modifier = Modifier.fillMaxWidth(),
+      horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+      VerticalInputComponent(
+        modifier = Modifier.weight(1f),
+        header = "Egg Count",
+        number = number
+      )
+
+      VerticalInputComponent(
+        modifier = Modifier.weight(1f),
+        header = "Chicken Count",
+        number = number
       )
     }
   }
