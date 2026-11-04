@@ -1,22 +1,31 @@
 package com.example.wpn.ui.pages
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.wpn.ui.components.CustomListComponent
+import com.example.wpn.ui.components.DateField
 import com.example.wpn.ui.components.ReorderListComponent
+import com.example.wpn.ui.components.ScoringBoolComponent
 import com.example.wpn.ui.components.SearchDropDownComponent
 import com.example.wpn.ui.components.VerticalInputComponent
+import java.time.LocalDate
 
 @Composable
 fun HomeScreen(
   modifier: Modifier
 ) {
-  val  number = rememberTextFieldState("0")
+  val number = rememberTextFieldState("0")
+
+  var isHard by remember { mutableStateOf(true) }
+
+  var date by remember { mutableStateOf(LocalDate.now())}
 
   val testItems = remember {
     mutableStateListOf(
@@ -108,6 +117,24 @@ fun HomeScreen(
         modifier = Modifier.weight(1f),
         header = "Chicken Count",
         number = number
+      )
+    }
+
+    Row(
+      modifier = Modifier.fillMaxWidth(),
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+
+      DateField(
+        label = "Played At",
+        date = date,
+        onDateChange = { date = it }
+      )
+
+      ScoringBoolComponent(
+        state= isHard,
+        onStateChange = { isHard = it }
       )
     }
   }

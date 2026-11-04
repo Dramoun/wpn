@@ -7,6 +7,7 @@ enum class AppPage(val label: String) {
   PLAYER_LIST("Players"),
   PLAYER_DETAILS("Player details"),
   MATCH_LIST("Matches"),
+  MATCH_EDIT("Edit match"),
   TAGS("Tags"),
   DLCS("DLCs"),
   QUESTS_PERSONAL("Player quests"),
@@ -46,4 +47,13 @@ data class PlayerMatchItemData(
   val tags: MutableList<String>,
   val playerPersonalQuests: MutableList<String>,
   val playerMatchQuests: MutableMap<Int, Int>
+)
+
+data class MatchData(
+  val id: Long?,
+  val playedAt: LocalDateTime?,
+  val hardScoring: Boolean = false,
+  val dlcs: List<Long>,
+  val quests: Map<Int, Long>,
+  val playerDataList: List<PlayerMatchItemData>
 )

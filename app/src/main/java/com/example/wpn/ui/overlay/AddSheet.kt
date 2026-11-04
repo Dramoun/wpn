@@ -13,7 +13,8 @@ fun AddSheet(
   onDelete: (EditingItem) -> Unit
 ) {
   when (currentPage) {
-    AppPage.HOME -> null
+    AppPage.HOME,
+    AppPage.MATCH_EDIT -> null
 
     AppPage.PLAYER_DETAILS,
     AppPage.PLAYER_LIST -> {

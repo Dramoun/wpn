@@ -31,6 +31,7 @@ fun BaseScreen(
 ) {
   when (currentPage) {
     AppPage.MATCH_LIST -> null
+    AppPage.MATCH_EDIT -> null
     AppPage.HOME ->
       HomeScreen(
         modifier = modifier
