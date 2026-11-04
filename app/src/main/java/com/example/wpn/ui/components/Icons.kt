@@ -34,7 +34,7 @@ fun AppIcon(
   hasBorder: Boolean = true,
   showIcon: Boolean = true,
   useIconStyleColors: Boolean = false,
-  onClick: () -> Unit = {}
+  onClick: (() -> Unit)? = {}
 ) {
   val foregroundColor = if (useIconStyleColors) {
     style.color
@@ -54,16 +54,12 @@ fun AppIcon(
       .background(backgroundColor, CircleShape)
       .then(
         if (hasBorder) {
-          Modifier.border(
-            width = 1.5.dp,
-            color = foregroundColor.copy(alpha = 0.4f),
-            shape = CircleShape
-          )
-        } else {
-          Modifier
-        }
+          Modifier.border(1.5.dp, foregroundColor.copy(alpha = 0.4f), CircleShape)
+        } else Modifier
       )
-      .clickable(onClick = onClick),
+      .then(
+        if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier
+      ),
     contentAlignment = Alignment.Center
   ) {
     if (showIcon) {
@@ -105,6 +101,8 @@ enum class AppIconType {
   ARROW_RIGHT,
   MENU,
   MORE,
+  SMILE_FACE,
+  SAD_FACE
 }
 
 @Composable
@@ -142,6 +140,9 @@ fun AppIconType.toStyle(): IconStyle = when (this) {
 
   AppIconType.MENU -> AppIcons.Menu()
   AppIconType.MORE -> AppIcons.More()
+
+  AppIconType.SMILE_FACE -> AppIcons.SmileFace()
+  AppIconType.SAD_FACE -> AppIcons.SadFace()
 }
 
 // https://fonts.google.com/icons
@@ -357,6 +358,22 @@ object AppIcons {
   @Composable
   fun More() = IconStyle(
     icon = painterResource(R.drawable.more_horiz_24px),
+    contentDescription = "More",
+    color = MaterialTheme.colorScheme.onSurface,
+    background = MaterialTheme.colorScheme.surface,
+  )
+
+  @Composable
+  fun SmileFace() = IconStyle(
+    icon = painterResource(R.drawable.sentiment_very_satisfied_24px),
+    contentDescription = "More",
+    color = MaterialTheme.colorScheme.onSurface,
+    background = MaterialTheme.colorScheme.surface,
+  )
+
+  @Composable
+  fun SadFace() = IconStyle(
+    icon = painterResource(R.drawable.sentiment_very_dissatisfied_24px),
     contentDescription = "More",
     color = MaterialTheme.colorScheme.onSurface,
     background = MaterialTheme.colorScheme.surface,
