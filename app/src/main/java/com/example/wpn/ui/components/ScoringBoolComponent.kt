@@ -24,7 +24,7 @@ fun ScoringBoolComponent(
         MaterialTheme.colorScheme.surface,
         RoundedCornerShape(20.dp)
       )
-      .padding(horizontal = 36.dp, vertical = 12.dp),
+      .padding(horizontal = 44.dp, vertical = 20.dp),
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.spacedBy(8.dp)
   ) {

@@ -14,8 +14,12 @@ import com.example.wpn.ui.components.DateField
 import com.example.wpn.ui.components.ReorderListComponent
 import com.example.wpn.ui.components.ScoringBoolComponent
 import com.example.wpn.ui.components.SearchDropDownComponent
+import com.example.wpn.ui.components.StartEndTimeSelectionComponent
+import com.example.wpn.ui.components.TimePickerComponent
 import com.example.wpn.ui.components.VerticalInputComponent
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
 
 @Composable
 fun HomeScreen(
@@ -25,29 +29,8 @@ fun HomeScreen(
 
   var isHard by remember { mutableStateOf(true) }
 
-  var date by remember { mutableStateOf(LocalDate.now())}
-
-  val testItems = remember {
-    mutableStateListOf(
-      "First item",
-      "Second item",
-      "Third item",
-      "Fourth item",
-      "Fifth item"
-    )
-  }
-
-  val options = remember {
-    mapOf(
-      1L to "Apple",
-      2L to "Banana",
-      3L to "Orange",
-      4L to "Strawberry",
-      5L to "Watermelon",
-      6L to "Pineapple",
-      7L to "Mango"
-    )
-  }
+  var start by remember { mutableStateOf(LocalTime.now())}
+  var end by remember { mutableStateOf(LocalTime.now().plusHours(1))}
 
   Column(
     modifier = modifier
@@ -68,41 +51,6 @@ fun HomeScreen(
 
     Spacer(modifier = Modifier.height(16.dp))
 
-    SearchDropDownComponent(
-      options = options,
-      headerText = "Add an item",
-      hint = "Search items",
-      lastItemContent = {
-        Text("Add custom item")
-      },
-      onItemSelected = { id ->
-        val selectedItem = options[id]
-
-        if (selectedItem != null && selectedItem !in testItems) {
-          testItems.add(selectedItem)
-        }
-      },
-      onLastItemClick = {
-        testItems.add("Custom item ${testItems.size + 1}")
-      }
-    )
-
-    ReorderListComponent(
-      modifier = Modifier.fillMaxWidth(),
-      items = testItems,
-      removeRow = { item ->
-        testItems.remove(item)
-      },
-      moveItem = { originalIndex, targetIndex ->
-        val item = testItems.removeAt(originalIndex)
-        testItems.add(targetIndex, item)
-      }
-    ) { item ->
-      Text(
-        text = item,
-        style = MaterialTheme.typography.bodyLarge
-      )
-    }
     Row(
       modifier = Modifier.fillMaxWidth(),
       horizontalArrangement = Arrangement.spacedBy(12.dp)
@@ -120,22 +68,17 @@ fun HomeScreen(
       )
     }
 
-    Row(
-      modifier = Modifier.fillMaxWidth(),
-      verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.SpaceEvenly
-    ) {
+    Spacer(modifier = Modifier.height(16.dp))
 
-      DateField(
-        label = "Played At",
-        date = date,
-        onDateChange = { date = it }
-      )
-
-      ScoringBoolComponent(
-        state= isHard,
-        onStateChange = { isHard = it }
-      )
-    }
+    StartEndTimeSelectionComponent(
+      start = start,
+      end = end,
+      onStartChange = { newTime ->
+        start = newTime
+      },
+      onEndChange = { newTime ->
+        end = newTime
+      }
+    )
   }
 }

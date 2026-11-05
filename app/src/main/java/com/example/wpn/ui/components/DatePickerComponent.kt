@@ -17,10 +17,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import java.time.Instant
-import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
@@ -29,8 +30,8 @@ import java.time.format.DateTimeFormatter
 fun DateField(
   modifier: Modifier = Modifier,
   label: String,
-  date: LocalDate,
-  onDateChange: (LocalDate) -> Unit,
+  date: LocalDateTime,
+  onDateChange: (LocalDateTime) -> Unit,
   formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MM yyyy")
 ) {
   var showPicker by remember { mutableStateOf(false) }
@@ -42,19 +43,24 @@ fun DateField(
         RoundedCornerShape(20.dp)
       )
       .padding(24.dp),
+    horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.spacedBy(8.dp)
   ) {
-    CustomTextBoxPrimary(
-      text = label
-    )
+    CustomTextBoxPrimary(text = label)
     CustomTextBoxSecondary(
-      modifier = Modifier.clickable { showPicker = true },
+      modifier = Modifier
+        .background(
+          color = MaterialTheme.colorScheme.surfaceVariant,
+          shape = RoundedCornerShape(8.dp)
+        )
+        .padding(8.dp)
+        .clickable { showPicker = true },
       text = date.format(formatter)
     )
   }
 
   if (showPicker) {
-    val state = rememberDatePickerState(
+    val pickerState = rememberDatePickerState(
       initialSelectedDateMillis = date.toEpochMillisUtc()
     )
 
@@ -62,31 +68,23 @@ fun DateField(
       onDismissRequest = { showPicker = false },
       confirmButton = {
         TextButton(onClick = {
-          state.selectedDateMillis?.let { onDateChange(it.toLocalDateUtc()) }
+          pickerState.selectedDateMillis?.let { onDateChange(it.toLocalDateTimeUtc()) }
           showPicker = false
-        }) {
-          CustomTextBoxPrimary(
-            text = "OK"
-          )
-        }
+        }) { CustomTextBoxPrimary(text = "OK") }
       },
       dismissButton = {
-        TextButton(
-          onClick = { showPicker = false }
-        ) {
-          CustomTextBoxSecondary(
-            text = "Cancel"
-          )
+        TextButton(onClick = { showPicker = false }) {
+          CustomTextBoxSecondary(text = "Cancel")
         }
       }
     ) {
-      DatePicker(state = state)
+      DatePicker(state = pickerState)
     }
   }
 }
 
-internal fun LocalDate.toEpochMillisUtc(): Long =
-  atStartOfDay(ZoneOffset.UTC).toInstant().toEpochMilli()
+private fun LocalDateTime.toEpochMillisUtc(): Long =
+  toInstant(ZoneOffset.UTC).toEpochMilli()
 
-internal fun Long.toLocalDateUtc(): LocalDate =
-  Instant.ofEpochMilli(this).atZone(ZoneOffset.UTC).toLocalDate()
+private fun Long.toLocalDateTimeUtc(): LocalDateTime =
+  LocalDateTime.ofInstant(Instant.ofEpochMilli(this), ZoneOffset.UTC)
