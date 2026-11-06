@@ -15,7 +15,7 @@ import com.example.wpn.ui.components.general.CustomTextBoxPrimary
 import com.example.wpn.ui.components.general.CustomTextBoxSecondary
 
 @Composable
-fun PlayerListingComponent (
+fun PlayerItem (
   modifier: Modifier = Modifier,
   onPlayerClick: () -> Unit = {},
   playerData: PlayerItemData

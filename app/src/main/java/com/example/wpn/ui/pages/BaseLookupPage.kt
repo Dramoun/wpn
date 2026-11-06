@@ -9,7 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.wpn.ui.components.CrudItemComponent
+import com.example.wpn.ui.components.CrudItem
 import com.example.wpn.model.CommonCrudItemData
 
 @Composable
@@ -25,7 +25,7 @@ fun BaseLookupPage(
       verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
       items(itemList) { item ->
-        CrudItemComponent(
+        CrudItem(
           item = item,
           onItemClick = onItemClick
         )

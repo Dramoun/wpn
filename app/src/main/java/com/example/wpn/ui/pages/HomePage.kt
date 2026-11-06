@@ -9,8 +9,8 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.wpn.ui.components.StartEndTimeSelectionComponent
-import com.example.wpn.ui.components.general.VerticalInputComponent
+import com.example.wpn.ui.components.StartEndTimeSelection
+import com.example.wpn.ui.components.general.VerticalInput
 import java.time.LocalTime
 
 @Composable
@@ -47,13 +47,13 @@ fun HomeScreen(
       modifier = Modifier.fillMaxWidth(),
       horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-      VerticalInputComponent(
+      VerticalInput(
         modifier = Modifier.weight(1f),
         header = "Egg Count",
         number = number
       )
 
-      VerticalInputComponent(
+      VerticalInput(
         modifier = Modifier.weight(1f),
         header = "Chicken Count",
         number = number
@@ -62,7 +62,7 @@ fun HomeScreen(
 
     Spacer(modifier = Modifier.height(16.dp))
 
-    StartEndTimeSelectionComponent(
+    StartEndTimeSelection(
       start = start,
       end = end,
       onStartChange = { newTime ->

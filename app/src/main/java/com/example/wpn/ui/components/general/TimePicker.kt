@@ -15,7 +15,7 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 @Composable
-fun TimePickerComponent(
+fun TimePicker(
   modifier: Modifier = Modifier,
   label: String,
   time: LocalTime,

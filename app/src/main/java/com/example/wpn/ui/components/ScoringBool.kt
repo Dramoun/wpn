@@ -11,11 +11,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.wpn.ui.components.general.CustomTextBoxPrimary
-import com.example.wpn.ui.components.general.ToggleComponent
+import com.example.wpn.ui.components.general.Toggle
 
 
 @Composable
-fun ScoringBoolComponent(
+fun ScoringBool(
   modifier: Modifier = Modifier,
   state: Boolean,
   onStateChange: (Boolean) -> Unit
@@ -33,7 +33,7 @@ fun ScoringBoolComponent(
     CustomTextBoxPrimary(
       text = "Scoring"
     )
-    ToggleComponent(
+    Toggle(
       state = state,
       onStateChange = onStateChange
     )

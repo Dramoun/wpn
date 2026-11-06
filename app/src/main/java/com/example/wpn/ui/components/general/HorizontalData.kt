@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HorizontalDataComponent (
+fun HorizontalData (
   modifier: Modifier = Modifier,
   header: String,
   text: String

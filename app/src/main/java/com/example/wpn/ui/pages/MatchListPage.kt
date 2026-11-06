@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.wpn.model.MatchData
 import com.example.wpn.model.PlayerItemData
-import com.example.wpn.ui.components.MatchDataComponent
+import com.example.wpn.ui.components.MatchDataItem
 
 @Composable
 fun MatchListPage(
@@ -30,7 +30,7 @@ fun MatchListPage(
         val hsPlayerMatchData = matchData.playerDataList.maxBy { player -> player.totalScore }
         val hsPlayer = getPlayerData(hsPlayerMatchData.id)
 
-        MatchDataComponent(
+        MatchDataItem(
           hsPlayerShortName = hsPlayer.shortName,
           hsPlayerScore = hsPlayerMatchData.totalScore,
           playedAt = matchData.playedAt!!,

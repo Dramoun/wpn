@@ -13,7 +13,7 @@ import com.example.wpn.ui.components.general.CustomTextBoxPrimary
 import com.example.wpn.ui.components.general.CustomTextBoxSecondary
 
 @Composable
-fun CrudItemComponent (
+fun CrudItem (
   modifier: Modifier = Modifier,
   item: CommonCrudItemData,
   onItemClick: (CommonCrudItemData) -> Unit = {},

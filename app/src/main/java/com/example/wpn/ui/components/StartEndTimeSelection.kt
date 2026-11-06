@@ -12,14 +12,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.wpn.ui.components.general.TimeDialDialog
-import com.example.wpn.ui.components.general.TimePickerComponent
+import com.example.wpn.ui.components.general.TimePicker
 import com.example.wpn.ui.helpers.minutesBetween
 import java.time.LocalTime
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StartEndTimeSelectionComponent(
+fun StartEndTimeSelection(
   modifier: Modifier = Modifier,
   start: LocalTime,
   end: LocalTime,
@@ -35,7 +35,7 @@ fun StartEndTimeSelectionComponent(
     horizontalArrangement = Arrangement.SpaceAround,
     verticalAlignment = Alignment.CenterVertically
   ) {
-    TimePickerComponent(
+    TimePicker(
       label = "Start",
       time = start,
       openTimeDialog = { time, label ->
@@ -45,11 +45,11 @@ fun StartEndTimeSelectionComponent(
       }
     )
 
-    TimeDifferenceComponent(
+    TimeDifference(
       totalMinutes = minutesBetween(start, end)
     )
 
-    TimePickerComponent(
+    TimePicker(
       label = "End",
       time = end,
       openTimeDialog = { time, label ->

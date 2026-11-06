@@ -17,7 +17,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun <T : Any> CustomListComponent(
+fun <T : Any> CustomList(
   modifier: Modifier = Modifier,
   items: List<T>,
   removeRow: (T) -> Unit,

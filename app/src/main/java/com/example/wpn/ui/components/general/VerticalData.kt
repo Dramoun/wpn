@@ -22,7 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun VerticalDataComponent (
+fun VerticalData (
   modifier: Modifier = Modifier,
   header: String,
   text: String
@@ -38,7 +38,7 @@ fun VerticalDataComponent (
 }
 
 @Composable
-fun VerticalInputComponent(
+fun VerticalInput(
   modifier: Modifier = Modifier,
   header: String,
   number: TextFieldState

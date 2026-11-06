@@ -33,7 +33,7 @@ import androidx.compose.ui.zIndex
 import kotlin.math.roundToInt
 
 @Composable
-fun <T : Any> ReorderListComponent(
+fun <T : Any> ReorderList(
   modifier: Modifier = Modifier,
   items: List<T>,
   removeRow: (T) -> Unit,

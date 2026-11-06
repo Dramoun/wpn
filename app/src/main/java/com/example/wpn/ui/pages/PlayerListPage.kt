@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.wpn.model.PlayerItemData
-import com.example.wpn.ui.components.PlayerListingComponent
+import com.example.wpn.ui.components.PlayerItem
 
 @Composable
 fun PlayerListPage(
@@ -25,7 +25,7 @@ fun PlayerListPage(
       verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
       items(playerList) { playerData ->
-        PlayerListingComponent(
+        PlayerItem(
           onPlayerClick = { onPlayerClick(playerData)},
           playerData = playerData
         )

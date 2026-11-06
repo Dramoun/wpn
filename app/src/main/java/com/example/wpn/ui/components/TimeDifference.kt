@@ -14,7 +14,7 @@ import com.example.wpn.ui.components.general.CustomTextBoxPrimary
 import com.example.wpn.ui.components.general.CustomTextBoxSecondary
 
 @Composable
-fun TimeDifferenceComponent(
+fun TimeDifference(
   modifier: Modifier = Modifier,
   totalMinutes: Int,
 ) {

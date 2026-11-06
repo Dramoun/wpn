@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter
 
 
 @Composable
-fun MatchDataComponent(
+fun MatchDataItem(
   modifier: Modifier = Modifier,
   hsPlayerShortName: String,
   hsPlayerScore: Int,

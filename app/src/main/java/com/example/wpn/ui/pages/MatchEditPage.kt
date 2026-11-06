@@ -23,10 +23,10 @@ import com.example.wpn.model.CommonCrudItemData
 import com.example.wpn.model.MatchData
 import com.example.wpn.model.PlayerItemData
 import com.example.wpn.ui.components.DateField
-import com.example.wpn.ui.components.general.ReorderListComponent
-import com.example.wpn.ui.components.ScoringBoolComponent
-import com.example.wpn.ui.components.general.SearchDropDownComponent
-import com.example.wpn.ui.components.StartEndTimeSelectionComponent
+import com.example.wpn.ui.components.general.ReorderList
+import com.example.wpn.ui.components.ScoringBool
+import com.example.wpn.ui.components.general.SearchDropDown
+import com.example.wpn.ui.components.StartEndTimeSelection
 import com.example.wpn.ui.helpers.minutesBetween
 import java.time.LocalDateTime
 import java.time.LocalTime
@@ -87,7 +87,7 @@ fun MatchEditPage(
         onDateChange = { matchDate = it }
       )
 
-      ScoringBoolComponent(
+      ScoringBool(
         state = hardScoring,
         onStateChange = { hardScoring = it }
       )
@@ -95,7 +95,7 @@ fun MatchEditPage(
 
     Spacer(modifier = Modifier.height(16.dp))
 
-    StartEndTimeSelectionComponent(
+    StartEndTimeSelection(
       start = start,
       end = end,
       onStartChange = { start = it },
@@ -104,7 +104,7 @@ fun MatchEditPage(
 
     Spacer(modifier = Modifier.height(16.dp))
 
-    SearchDropDownComponent(
+    SearchDropDown(
       options = options,
       headerText = "Add an item",
       hint = "Search items",
@@ -123,7 +123,7 @@ fun MatchEditPage(
       }
     )
 
-    ReorderListComponent(
+    ReorderList(
       modifier = Modifier.fillMaxWidth(),
       items = testItems,
       removeRow = { item ->

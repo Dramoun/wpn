@@ -13,8 +13,8 @@ import androidx.compose.ui.unit.dp
 import com.example.wpn.model.PlayerItemData
 import com.example.wpn.ui.components.general.AppIcon
 import com.example.wpn.ui.components.general.AppIconType
-import com.example.wpn.ui.components.general.HorizontalDataComponent
-import com.example.wpn.ui.components.general.VerticalDataComponent
+import com.example.wpn.ui.components.general.HorizontalData
+import com.example.wpn.ui.components.general.VerticalData
 import com.example.wpn.ui.components.general.toStyle
 
 
@@ -60,18 +60,18 @@ fun PlayerDetailsPage(
       verticalAlignment = Alignment.CenterVertically,
       horizontalArrangement = Arrangement.SpaceBetween
     ) {
-      VerticalDataComponent(
+      VerticalData(
         header="High Score",
         text=playerInfo.highScore?.toString() ?: "0"
       )
 
       // TODO: this should be custom component
-      VerticalDataComponent(
+      VerticalData(
         header=" ",
         text=playerInfo.shortName
       )
 
-      VerticalDataComponent(
+      VerticalData(
         header="Winrate",
         text="${winrate.toInt()}%"
       )
@@ -80,32 +80,32 @@ fun PlayerDetailsPage(
     Column(
       modifier = Modifier.fillMaxWidth().padding(12.dp)
     ) {
-      HorizontalDataComponent(
+      HorizontalData(
         header="Wins",
         text=playerInfo.totalWins?.toString() ?: "0"
       )
 
-      HorizontalDataComponent(
+      HorizontalData(
         header="Average Score",
         text=playerInfo.averageScore?.toString() ?: "0"
       )
 
-      HorizontalDataComponent(
+      HorizontalData(
         header="Low Score",
         text=playerInfo.lowScore?.toString() ?: "0"
       )
 
-      HorizontalDataComponent(
+      HorizontalData(
         header="Total games",
         text=playerInfo.totalGames?.toString() ?: "0"
       )
 
-      HorizontalDataComponent(
+      HorizontalData(
         header="Last game played",
         text=playerInfo.lastPlayed?.toLocalDate().toString()
       )
 
-      HorizontalDataComponent(
+      HorizontalData(
         header="Joined",
         text=playerInfo.joinedAt.toLocalDate().toString()
       )

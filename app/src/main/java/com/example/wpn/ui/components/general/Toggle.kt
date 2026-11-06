@@ -14,7 +14,7 @@ import com.example.wpn.ui.theme.SuccessColor
 
 
 @Composable
-fun ToggleComponent(
+fun Toggle(
   modifier: Modifier = Modifier,
   state: Boolean,
   trueStyle: IconStyle = AppIconType.SAD_FACE.toStyle(),

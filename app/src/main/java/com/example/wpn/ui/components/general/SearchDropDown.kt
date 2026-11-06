@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 //TODO: used items shouldn't be hinted
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchDropDownComponent(
+fun SearchDropDown(
   modifier: Modifier = Modifier,
   options: Map<Long, String>,
   headerText: String,
