@@ -3,6 +3,7 @@ package com.example.wpn.ui.components
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.NavigationDrawerItemColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,6 +16,7 @@ fun DrawerItem(
   modifier: Modifier = Modifier,
   itemPage: AppPage,
   currentPage: AppPage,
+  colors: NavigationDrawerItemColors,
   onClick: (AppPage) -> Unit
 ){
   NavigationDrawerItem(
@@ -27,7 +29,8 @@ fun DrawerItem(
     selected = currentPage == itemPage,
     onClick = {
       onClick(itemPage)
-    }
+    },
+    colors = colors
   )
 }
 
