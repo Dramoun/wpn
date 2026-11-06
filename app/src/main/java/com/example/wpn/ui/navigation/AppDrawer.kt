@@ -12,6 +12,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -31,6 +32,13 @@ fun AppDrawer(
 ) {
   val drawerState = rememberDrawerState(DrawerValue.Closed)
   val scope = rememberCoroutineScope()
+
+  val itemColors = NavigationDrawerItemDefaults.colors(
+    selectedContainerColor = MaterialTheme.colorScheme.surfaceVariant,
+    selectedTextColor = MaterialTheme.colorScheme.onSurface,
+    unselectedContainerColor = MaterialTheme.colorScheme.surface,
+    unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+  )
 
   fun onClick(page: AppPage) {
     onPageSelected(page)
@@ -61,13 +69,15 @@ fun AppDrawer(
           DrawerItem(
             itemPage=AppPage.HOME,
             currentPage = currentPage,
-            onClick = { page -> onClick(page) }
+            onClick = { page -> onClick(page) },
+            colors = itemColors
           )
 
           DrawerItem(
             itemPage=AppPage.PLAYER_LIST,
             currentPage = currentPage,
-            onClick = { page -> onClick(page) }
+            onClick = { page -> onClick(page) },
+            colors = itemColors
           )
 
           Spacer(Modifier.height(12.dp))
@@ -77,25 +87,29 @@ fun AppDrawer(
           DrawerItem(
             itemPage=AppPage.TAGS,
             currentPage = currentPage,
-            onClick = { page -> onClick(page) }
+            onClick = { page -> onClick(page) },
+            colors = itemColors
           )
 
           DrawerItem(
             itemPage=AppPage.DLCS,
             currentPage = currentPage,
-            onClick = { page -> onClick(page) }
+            onClick = { page -> onClick(page) },
+            colors = itemColors
           )
 
           DrawerItem(
             itemPage=AppPage.QUESTS_MATCH,
             currentPage = currentPage,
-            onClick = { page -> onClick(page) }
+            onClick = { page -> onClick(page) },
+            colors = itemColors
           )
 
           DrawerItem(
             itemPage=AppPage.QUESTS_PERSONAL,
             currentPage = currentPage,
-            onClick = { page -> onClick(page) }
+            onClick = { page -> onClick(page) },
+            colors = itemColors
           )
         }
       }
