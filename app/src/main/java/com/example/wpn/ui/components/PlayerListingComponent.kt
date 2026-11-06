@@ -11,6 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.wpn.model.PlayerItemData
+import com.example.wpn.ui.components.general.CustomTextBoxPrimary
+import com.example.wpn.ui.components.general.CustomTextBoxSecondary
 
 @Composable
 fun PlayerListingComponent (
@@ -26,10 +28,10 @@ fun PlayerListingComponent (
       verticalAlignment = Alignment.CenterVertically,
       horizontalArrangement = Arrangement.SpaceBetween
     ) {
-      CustomTextBoxPrimary( text = playerData.shortName)
-      CustomTextBoxSecondary( text = playerData.highScore?.toString() ?: "0")
-      CustomTextBoxSecondary( text = playerData.totalWins?.toString() ?: "0")
-      CustomTextBoxPrimary( text = playerData.totalGames?.toString() ?: "0")
+      CustomTextBoxPrimary(text = playerData.shortName)
+      CustomTextBoxSecondary(text = playerData.highScore?.toString() ?: "0")
+      CustomTextBoxSecondary(text = playerData.totalWins?.toString() ?: "0")
+      CustomTextBoxPrimary(text = playerData.totalGames?.toString() ?: "0")
     }
   }
 }

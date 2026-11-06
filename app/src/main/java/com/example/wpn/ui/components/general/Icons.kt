@@ -1,4 +1,4 @@
-package com.example.wpn.ui.components
+package com.example.wpn.ui.components.general
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

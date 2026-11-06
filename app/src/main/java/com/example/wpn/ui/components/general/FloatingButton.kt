@@ -1,4 +1,4 @@
-package com.example.wpn.ui.components
+package com.example.wpn.ui.components.general
 
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.runtime.Composable
@@ -13,7 +13,7 @@ fun AppFloatingButton(
     containerColor = Color.Transparent
   ) {
     AppIcon(
-      style= AppIconType.ADD.toStyle(),
+      style = AppIconType.ADD.toStyle(),
       onClick = onClick
     )
   }

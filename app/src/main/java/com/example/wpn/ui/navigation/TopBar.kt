@@ -2,13 +2,12 @@ package com.example.wpn.ui.navigation
 
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import com.example.wpn.ui.components.AppIcon
-import com.example.wpn.ui.components.AppIcons
+import com.example.wpn.ui.components.general.AppIcon
+import com.example.wpn.ui.components.general.AppIcons
 import com.example.wpn.model.AppPage
 
 @OptIn(ExperimentalMaterial3Api::class)

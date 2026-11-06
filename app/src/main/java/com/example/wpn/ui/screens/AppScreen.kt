@@ -7,7 +7,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import com.example.wpn.preprocesses.EditingItem
 import com.example.wpn.preprocesses.rememberAppUiState
-import com.example.wpn.ui.components.AppFloatingButton
+import com.example.wpn.ui.components.general.AppFloatingButton
 import com.example.wpn.model.AppPage
 import com.example.wpn.model.CommonCrudItemData
 import com.example.wpn.model.PlayerItemData

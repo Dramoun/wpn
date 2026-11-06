@@ -23,9 +23,9 @@ import com.example.wpn.model.CommonCrudItemData
 import com.example.wpn.model.MatchData
 import com.example.wpn.model.PlayerItemData
 import com.example.wpn.ui.components.DateField
-import com.example.wpn.ui.components.ReorderListComponent
+import com.example.wpn.ui.components.general.ReorderListComponent
 import com.example.wpn.ui.components.ScoringBoolComponent
-import com.example.wpn.ui.components.SearchDropDownComponent
+import com.example.wpn.ui.components.general.SearchDropDownComponent
 import com.example.wpn.ui.components.StartEndTimeSelectionComponent
 import com.example.wpn.ui.helpers.minutesBetween
 import java.time.LocalDateTime

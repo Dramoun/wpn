@@ -20,6 +20,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.wpn.ui.components.general.CustomTextBoxPrimary
+import com.example.wpn.ui.components.general.CustomTextBoxSecondary
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneOffset

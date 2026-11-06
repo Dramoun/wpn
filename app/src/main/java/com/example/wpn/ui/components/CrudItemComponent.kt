@@ -7,9 +7,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.wpn.model.CommonCrudItemData
+import com.example.wpn.ui.components.general.CustomTextBoxPrimary
+import com.example.wpn.ui.components.general.CustomTextBoxSecondary
 
 @Composable
 fun CrudItemComponent (
@@ -23,8 +24,8 @@ fun CrudItemComponent (
     Column(
       modifier = Modifier.fillMaxWidth().padding(12.dp),
     ) {
-      CustomTextBoxPrimary( text=item.name )
-      CustomTextBoxSecondary( text=item.description ?: "" )
+      CustomTextBoxPrimary(text = item.name)
+      CustomTextBoxSecondary(text = item.description ?: "")
     }
   }
 }

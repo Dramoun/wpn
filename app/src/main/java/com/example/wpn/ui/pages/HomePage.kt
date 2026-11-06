@@ -7,18 +7,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.wpn.ui.components.DateField
-import com.example.wpn.ui.components.ReorderListComponent
-import com.example.wpn.ui.components.ScoringBoolComponent
-import com.example.wpn.ui.components.SearchDropDownComponent
 import com.example.wpn.ui.components.StartEndTimeSelectionComponent
-import com.example.wpn.ui.components.TimePickerComponent
-import com.example.wpn.ui.components.VerticalInputComponent
-import java.time.LocalDate
-import java.time.LocalDateTime
+import com.example.wpn.ui.components.general.VerticalInputComponent
 import java.time.LocalTime
 
 @Composable

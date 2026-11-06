@@ -11,11 +11,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.wpn.model.PlayerItemData
-import com.example.wpn.ui.components.AppIcon
-import com.example.wpn.ui.components.AppIconType
-import com.example.wpn.ui.components.HorizontalDataComponent
-import com.example.wpn.ui.components.VerticalDataComponent
-import com.example.wpn.ui.components.toStyle
+import com.example.wpn.ui.components.general.AppIcon
+import com.example.wpn.ui.components.general.AppIconType
+import com.example.wpn.ui.components.general.HorizontalDataComponent
+import com.example.wpn.ui.components.general.VerticalDataComponent
+import com.example.wpn.ui.components.general.toStyle
 
 
 @Composable

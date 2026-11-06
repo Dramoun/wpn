@@ -1,7 +1,5 @@
-package com.example.wpn.ui.components
+package com.example.wpn.ui.components.general
 
-import androidx.compose.animation.Crossfade
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size

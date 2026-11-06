@@ -1,4 +1,4 @@
-package com.example.wpn.ui.components
+package com.example.wpn.ui.components.general
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -20,7 +20,7 @@ fun HorizontalDataComponent (
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.SpaceBetween
   ) {
-    CustomTextBoxPrimary( text=header )
-    CustomTextBoxSecondary( text=text )
+    CustomTextBoxPrimary(text = header)
+    CustomTextBoxSecondary(text = text)
   }
 }
