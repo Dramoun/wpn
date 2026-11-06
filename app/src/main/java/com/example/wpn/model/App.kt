@@ -44,6 +44,7 @@ data class PlayerMatchItemData(
   val totalBirdCount: Int,
   val totalPersonalQuests: Int,
   val totalMatchQuests: Int,
+  val totalScore: Int,
   val tags: MutableList<String>,
   val playerPersonalQuests: MutableList<String>,
   val playerMatchQuests: MutableMap<Int, Int>
