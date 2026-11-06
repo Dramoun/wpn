@@ -1,5 +1,6 @@
 package com.example.wpn.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -20,13 +21,17 @@ fun MatchDataComponent(
   hsPlayerScore: Int,
   playedAt: LocalDateTime,
   duration: Int,
-  totalPlayers: Int
+  totalPlayers: Int,
+  onMatchClick: () -> Unit
 ) {
   val playedAtFormatter = DateTimeFormatter.ofPattern("dd MM yyyy")
 
   Row(
     modifier = modifier
-      .padding(12.dp),
+      .padding(12.dp)
+      .clickable(
+        onClick = { onMatchClick() }
+      ),
     verticalAlignment = Alignment.CenterVertically,
     horizontalArrangement = Arrangement.SpaceBetween
   ) {

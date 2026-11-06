@@ -4,9 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.wpn.model.AppPage
 import com.example.wpn.model.CommonCrudItemData
+import com.example.wpn.model.MatchData
 import com.example.wpn.model.PlayerItemData
 import com.example.wpn.ui.pages.BaseLookupPage
 import com.example.wpn.ui.pages.HomeScreen
+import com.example.wpn.ui.pages.MatchListPage
 import com.example.wpn.ui.pages.PlayerDetailsPage
 import com.example.wpn.ui.pages.PlayerListPage
 
@@ -20,6 +22,7 @@ fun BaseScreen(
   questMatchList: List<CommonCrudItemData>,
   questPersonalList: List<CommonCrudItemData>,
   playerList: List<PlayerItemData>,
+  matchesList: List<MatchData>,
   onDlcClick: (CommonCrudItemData) -> Unit,
   onTagClick: (CommonCrudItemData) -> Unit,
   onQuestMatchClick: (CommonCrudItemData) -> Unit,
@@ -27,10 +30,18 @@ fun BaseScreen(
   onPlayerClick: (PlayerItemData) -> Unit,
   onPlayerUpdateClick: (PlayerItemData) -> Unit,
   onDeletePlayerClick: (PlayerItemData) -> Unit,
+  onMatchClick: (MatchData) -> Unit,
+  getPlayerData: (id: Long) -> PlayerItemData,
   selectedPlayerData: PlayerItemData?
 ) {
   when (currentPage) {
-    AppPage.MATCH_LIST -> null
+    AppPage.MATCH_LIST ->
+      MatchListPage(
+        modifier = modifier,
+        matchesList = matchesList,
+        getPlayerData = getPlayerData,
+        onMatchClick = onMatchClick
+      )
     AppPage.MATCH_EDIT -> null
     AppPage.HOME ->
       HomeScreen(

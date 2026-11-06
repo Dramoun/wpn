@@ -17,11 +17,11 @@ import com.example.wpn.ui.components.general.CustomTextBoxSecondary
 @Composable
 fun PlayerListingComponent (
   modifier: Modifier = Modifier,
-  onPlayerClick: (playerId: Long) -> Unit = {},
+  onPlayerClick: () -> Unit = {},
   playerData: PlayerItemData
 ) {
   Card(
-    modifier = modifier.fillMaxWidth().clickable { onPlayerClick(playerData.id?: 0) }
+    modifier = modifier.fillMaxWidth().clickable { onPlayerClick() }
   ) {
     Row(
       modifier = Modifier.fillMaxWidth().padding(12.dp),

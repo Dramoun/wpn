@@ -10,6 +10,7 @@ import com.example.wpn.preprocesses.rememberAppUiState
 import com.example.wpn.ui.components.general.AppFloatingButton
 import com.example.wpn.model.AppPage
 import com.example.wpn.model.CommonCrudItemData
+import com.example.wpn.model.MatchData
 import com.example.wpn.model.PlayerItemData
 import com.example.wpn.ui.navigation.AppDrawer
 import com.example.wpn.ui.navigation.AppTopBar
@@ -79,6 +80,8 @@ fun AppScreen() {
             questMatchList = questMatchList,
             questPersonalList = questPersonalList,
             playerList = playerList,
+            //TODO
+            matchesList = matchesList,
             onDlcClick = { item ->
               ui.openEdit(EditingItem.DLC(item))
             },
@@ -104,7 +107,11 @@ fun AppScreen() {
             },
             selectedPlayerData = playerList.find {
               it.id == ui.selectedPlayerId
-            }
+            },
+            //TODO
+            onMatchClick = {},
+            //TODO
+            getPlayerData = { id -> playerList.first()},
           )
 
           if (ui.showAddSheet) {

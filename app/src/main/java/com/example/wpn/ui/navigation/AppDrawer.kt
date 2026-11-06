@@ -74,6 +74,13 @@ fun AppDrawer(
           )
 
           DrawerItem(
+            itemPage=AppPage.MATCH_LIST,
+            currentPage = currentPage,
+            onClick = { page -> onClick(page) },
+            colors = itemColors
+          )
+
+          DrawerItem(
             itemPage=AppPage.PLAYER_LIST,
             currentPage = currentPage,
             onClick = { page -> onClick(page) },
